@@ -1,5 +1,5 @@
 # Youtube-Ad-Skipper
-A Python application that can detect and skip Youtube ads that are currently playing on your device . Made using Python .
+A Python application that can detect and skip Youtube ads that are currently playing on your device .
 
 # Features
 
