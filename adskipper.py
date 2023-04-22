@@ -3,8 +3,8 @@ import numpy as np
 import pyautogui
 import os
 import tkinter.font as tkfont
+import tkinter.messagebox as messagebox
 import tkinter as tk
-
 
 class YoutubeAdSkipper:
     def __init__(self, threshold=0.7):
@@ -29,6 +29,7 @@ class YoutubeAdSkipper:
         self.window.bind("<Escape>", lambda e: self.window.quit())
 
         self.video_url = ""
+        self.ads_skipped = 0
         self.create_widgets()
 
     def create_widgets(self):
@@ -84,6 +85,9 @@ class YoutubeAdSkipper:
             loc = np.where(res >= self.threshold)
             if loc[0].size != 0:
                 pyautogui.click(list(zip(*loc[::-1]))[0])
+                self.ads_skipped += 1
+                print(f"Ads skipped: {self.ads_skipped}")
+                messagebox.showinfo("Ad Skipped", "An ad was skipped!")
         self.task = self.window.after(3000, self.start)
 
     def stop(self):
