@@ -38,7 +38,7 @@ jobs:
         pip install pyautogui
         sudo apt-get update
         sudo apt-get install -y xvfb xauth
-        pip install -r requirements.txt
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Start Xvfb
       run: |
