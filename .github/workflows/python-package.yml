@@ -36,7 +36,15 @@ jobs:
         pip install numpy
         pip install opencv-python
         pip install pyautogui
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        sudo apt-get update
+        sudo apt-get install -y xvfb xauth
+        pip install -r requirements.txt
+    
+    - name: Start Xvfb
+      run: |
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        export DISPLAY=:99
+        
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
