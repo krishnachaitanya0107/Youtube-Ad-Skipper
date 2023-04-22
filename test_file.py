@@ -1,5 +1,5 @@
 import pytest
-from youtube_ad_skipper import YoutubeAdSkipper
+from adskipper import YoutubeAdSkipper
 
 class TestYoutubeAdSkipper:
     @pytest.fixture
