@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pyautogui
 import os
+import webbrowser
 import tkinter.font as tkfont
 import tkinter.messagebox as messagebox
 import tkinter as tk
