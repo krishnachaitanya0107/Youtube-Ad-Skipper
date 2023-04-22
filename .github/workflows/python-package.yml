@@ -20,6 +20,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set DISPLAY environment variable
+      run: echo "DISPLAY=:99" >> $GITHUB_ENV
+      shell: bash
+      env:
+        XDG_RUNTIME_DIR: /tmp/xdg
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
