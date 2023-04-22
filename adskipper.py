@@ -28,6 +28,7 @@ class YoutubeAdSkipper:
 
         self.window.bind("<Escape>", lambda e: self.window.quit())
 
+        self.video_url = ""
         self.create_widgets()
 
     def create_widgets(self):
@@ -46,12 +47,23 @@ class YoutubeAdSkipper:
         stop_btn = tk.Button(self.window,
                              command=self.stop, width=60, height=60, image=self.stop_icon,
                              bg='black', bd=0, activebackground='black')
+        
+        self.video_url_entry = tk.Entry(self.window, width=50)
+        self.video_url_entry.pack(pady=10)
+        self.video_url_entry.insert(0, "Enter YouTube Video URL")
 
+        self.video_url_btn = tk.Button(self.window, text="Open Video", command=self.open_video)
+        self.video_url_btn.pack(pady=10)
+        
         btn_canvas = self.canvas.create_window(
             175, 400, anchor="nw", window=play_btn)
 
         btn_canvas = self.canvas.create_window(
             275, 400, anchor="nw", window=stop_btn)
+        
+    def open_video(self):
+        self.video_url = self.video_url_entry.get()
+        webbrowser.open_new(self.video_url)
 
     def load_templates(self):
         cur_dir_path = os.path.abspath(os.path.dirname(__file__))
